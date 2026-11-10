@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage{amsthm,amsfonts,amsmath,amssymb,color}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{fullpage}
+\usepackage{mathtools} % Recomandat pentru \coloneqq
+\linespread{1.3}
+
+\setcounter{page}{1}
+
+\theoremstyle{definition}                                 
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{pro}[thm]{Propozi\c tia}
+\newtheorem{de}[thm]{Defini\c tia}
+\newtheorem{re}[thm]{Observa\c tia}
+\newtheorem{ex}[thm]{Exemplul}
+\newtheorem{cor}[thm]{Corolarul}
+\def\Proof{\noindent{\em Demonstra\c tie. }}
+
+\title{ARBORI METRICI }
+
+\begin{document}
+	\maketitle
+	\section{Definiții și proprități}
+	\begin{de}
+		Fie $M$ un spa\c tiu metric si $x,\, y \in M$. Un segment geodezic de la $x$ la $y$ (notat cu $[x,y]$) este imaginea unei izometrii $\gamma \colon [a,b] \to M$ astfel \^inc\^at $\gamma(a)=x$ \c si $\gamma(b)=y$.
+		
+		Un spa\c tiu metric se nume\c ste geodezic dac\u a oricare dou\u a puncte ale sale pot fi conectate printr-un segment geodezic.
+	\end{de}
+	
+	\begin{de}
+		Un spa\c tiu metric $(M, d)$ se nume\c ste arbore metric dac\u a pentru oricare $x,y,z \in M$ sunt respectate rela\c tiile:
+		\begin{enumerate}
+			\item exist\u a un singur segment geodezic $[x,y]$;
+			\item dac\u a $[x,y] \cap [y,z]=\{y\}$ atunci $[x,y] \cup [y,z]=[x,z]$.
+		\end{enumerate}
+	\end{de}
+	
+	\begin{de}
+		Fie $T$ un arbore metric. O submul\c time $S \subset T$ se nume\c ste convex\u a  dac\u a, fiind date orice două puncte ale sale, $S$ include întreg segmentul determinat de acestea.
+	\end{de}
+	
+	\begin{de}
+		Fie $T$ un arbore metric. Un punct $t \in T$ se nume\c ste o frunz\u a sau un punct final al lui $T$ dac\u a există $[x,y]\subseteq T$ astfel încât $t \in \{x,y\}$.
+	\end{de}
+	
+	\section{Exemple remarcabile}
+	\begin{ex}[\textbf{Arborele real}]
+		Fie $X_{\mathbb{R}}$ mul\c timea tuturor submul\c timilor m\u arginite ale lui $\mathbb{R}$ care \^i\c si con\c tin infimumul (adic\u a au valoare minim\u a). Pentru două astfel de submul\c timi $x$ \c si $y$ se define\c ste 
+		\begin{equation}
+			d(x,y) \coloneqq 2 \max\{\sup(x \bigtriangleup y), \inf x, \inf y\bigr\} - (\inf x + \inf y),
+		\end{equation}
+		unde prin $x \bigtriangleup y$ se \^in\c telege diferen\c ta simetric\u a \^intre $x$ \c si $y$. Atunci $d \colon X_{\mathbb{R}} \times X_{\mathbb{R}} \to \mathbb{R}$ este metric\u a pe $X_{\mathbb{R}}$, iar $(X_{\mathbb{R}}, d)$ este arbore metric.
+	\end{ex}
+	\Proof
+		Mai \^ int\^ ai se va demonstra c\u a $d$ este distan\c t\u a pe $X_\mathbb{R}$. Fie $x,y \in X_{\mathbb{R}}$.  Not\^ and $M(x,y)=\max\bigl\{\sup(x \bigtriangleup y), \inf x, \inf y\bigr\}$ \c si $s(x,y)=\sup(x \bigtriangleup y)$ se ob\c tine
+$$M(x,y)  \geq \inf x \quad \text{\c si } \quad  M(x,y)  \geq \inf y, $$
+		de unde rezultă $2M(x,y) \geq \inf x + \inf y$, adic\u a 
+			$$d(x,y)=2M(x,y) - (\inf x + \inf y) \geq 0.$$  
+		% Scriu la pers 1 sau a 3-a?
+
+În continuare presupunem f\u ar\u a a pierde din generalitate c\u a $\inf x \geq \inf y$. Totodat\u a presupunem c\u a $d(x,y)=0$ adic\u a 
+			$$M(x,y) = \displaystyle{{\inf x + \inf y} \over {2}}.$$ 
+		\c Stim \^ ins\u a c\u a
+			$$M(x,y) \geq \inf x \geq \displaystyle{{\inf x + \inf y} \over {2}},$$
+		deci ob\c tinem $\inf x = \inf y = M(x,y)\geq \sup(x \bigtriangleup y)=s(x,y).$ Fie $v \in x \bigtriangleup y$. Atunci $v \leq s(x,y) \leq \inf x=\inf y$. Astfel, putem susține că $x \bigtriangleup y \subseteq \{ \inf x\}$. Pe de altă parte, $\inf x \in x$ \c si $\inf x=\inf y \in y$, deci $\inf x \in x \cap y$. Prin urmare $\inf x \notin x \bigtriangleup y$. Așadar, singura posibilitate validă este $x \bigtriangleup y = \varnothing$ \c si $x=y$. 
+
+Reciproc, dac\u a presupunem c\u a $x=y$, putem spune c\u a $M(x,y) = \inf x$ iar aplica\c tia devine 
+			$$d(x,y)=2\inf x - 2 \inf x = 0.$$
+		Pentru a demonstra c\u a $d$ este distan\c t\u a mai trebuie s\u a ar\u at\u am c\u a \^ indepline\c ste \c si inegalitatea triunghiului, adic\u a pentru orice $x,y,z \in X_{\mathbb{R}}$ avem
+			$$d(x,z) \leq d(x,y) +  d(y,z),\quad \forall x,y,z \in X_{\mathbb{R}},$$ 
+sau, folosind nota\c tia anterioar\u a, 
+			$$2M(x,z)-(\inf x + \inf z) \leq 2M(x,y) - (\inf x + \inf y) + 2M(y,z) - (\inf y + \inf z)$$ 
+		ceea ce este echivalent cu	
+			$$2M(x,y) + 2M(y,z) - 2M(x,z) \geq 2 \inf y.$$
+		Fie $x,y,z \in X_{\mathbb{R}}$. Dup\u a cum am ar\u atat mai \^ inainte aplica\c tia este pozitiv definit\u a, deci
+		$$ 2M(x,y) \geq \inf x + \inf y \quad \text{ \c si } \quad  2M(y,z) \geq \inf y + \inf z,$$
+		adic\u a 
+			$$2M(x,y)+2M(y,z) \geq \inf x + \inf z + 2 \inf y.$$
+		Dac\u a sc\u adem $d(x,z)$ din rela\c tia anterioar\u a ob\c tinem 
+			{\color{red} Nu sunt sigura !!! $$2M(x,y)+2M(y,z)-2M(x,z) \geq d(x,z) + 2 \inf y \geq 2 \inf y, $$} astfel demonstr\^ and \c si c\u a aplica\c tia $d$ respect\u a inegalitatea triunghiului \c si, \^ in final, reprezint\u a o distan\c t\u a. \hfill $\blacksquare$
+		
+		
+\end{document} 
